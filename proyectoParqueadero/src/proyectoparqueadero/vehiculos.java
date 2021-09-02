@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * clase padre que hereda su metodo placas a las clases hijas
  */
 package proyectoparqueadero;
 
@@ -16,13 +14,19 @@ public class vehiculos {
    
 
  
-
+    /**
+     * 
+     * @param Placa. constructor de placa
+     */
     public vehiculos(String Placa) {
         this.Placa = Placa;
     }
 
 
-
+    /**
+     * 
+     * @return placa. 
+     */
     public String getPlaca() {
         return Placa;
     }
@@ -30,7 +34,10 @@ public class vehiculos {
     public void setPlaca(String Placa) {
         this.Placa = Placa;
     }
-    
+    /**
+     * 
+     * @return tostring. muestra los datos del objeto
+     */
     @Override
     public String toString() {
         return "vehiculos{" + "Placa: " + Placa + '}';

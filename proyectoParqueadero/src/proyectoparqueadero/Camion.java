@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * clase camion que hereda de la clas padre vahiculos 
+ * esta calse tiene su propio metodo de pago 
  */
 package proyectoparqueadero;
 

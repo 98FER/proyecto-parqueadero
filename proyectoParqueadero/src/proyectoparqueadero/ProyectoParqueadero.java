@@ -1,21 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * en  este proyecto simularemos el uso de un  para parqueo
+ * en el cual se creara objetos tipo vehiculo los cuales tendran un espacio determinado en el parqueo
+ * que el usuario definira al igual que el costo
  */
 package proyectoparqueadero;
+
 import java.util.*;
 
-
-
 /**
- *
- * @author mario castañeda
+ * @author mario castañeda 1/9/21
+ * @version 1.0
  */
 public class ProyectoParqueadero {
 
     /**
-     * @param args the command line arguments
+     * @param args comandos para manejo de parqueo
      */
     public static void main(String[] args) {
         //creo variables para programa sea ejecutable y un arraylist para ingresar los autos 
@@ -24,12 +23,18 @@ public class ProyectoParqueadero {
         int exit = 0, opcion = 0;
         int opcionv = 0;
         int opcionp = 0;
-       
+        /**
+         * creo aarays list para guardar de objetos.
+         */
         ArrayList<vehiculos> EnParqueo = new ArrayList<vehiculos>();
         ArrayList<Motos> pm = new ArrayList<Motos>();
         ArrayList<Carro> pc = new ArrayList<Carro>();
         ArrayList<Camion> pca = new ArrayList<Camion>();
         Scanner entrada = new Scanner(System.in);
+        /**
+         * utilizare un metodo while para crear un menu para mejor manejo de
+         * usuario.
+         */
         while (exit != 1) {
 
             menu();
@@ -65,7 +70,7 @@ public class ProyectoParqueadero {
                                     }//fin de catch
 
                                 } while (eMotos < 1 || eMotos > 10);
-
+                                //ingreso y valido datos de tipo entero y double en un rango de 1 a 100.
                                 do {
                                     System.out.println("Ingrese Costo de Parqueo para motos .");
 
@@ -80,7 +85,7 @@ public class ProyectoParqueadero {
 
                                 break;
                             case 2:
-
+                                //ingreso y valido datos de tipo entero y double en un rango de 1 a 10.
                                 do {
                                     System.out.println("Ingrese Disponibilidad para carros.");
                                     try {
@@ -91,7 +96,7 @@ public class ProyectoParqueadero {
                                     }
 
                                 } while (eCarro < 1 || eCarro > 10);
-
+                                //ingreso y valido datos de tipo entero y double en un rango de 1 a 100.
                                 do {
                                     System.out.println("Ingrese Costo de Parqueo para carros.");
 
@@ -106,6 +111,7 @@ public class ProyectoParqueadero {
 
                                 break;
                             case 3:
+                                //ingreso y valido datos de tipo entero y double en un rango de 1 a 10.
                                 do {
                                     System.out.println("Ingrese Disponibilidad para camiones.");
                                     try {
@@ -116,7 +122,7 @@ public class ProyectoParqueadero {
                                     }
 
                                 } while (eCamion < 1 || eCamion > 10);
-
+                                //ingreso y valido datos de tipo entero y double en un rango de 1 a 100.
                                 do {
                                     System.out.println("Ingrese Costo de Parqueo para camiones.");
 
@@ -153,7 +159,8 @@ public class ProyectoParqueadero {
                             case 1:
 
                                 //verifico datos de moto como placa que sea solo de 5 caracteres
-                                System.out.println("Ingresando datos de moto.");
+                                System.out.print("costo de parqueo de motos por cada 60s es de: " + pagoMotos);
+                                System.out.println(" con un 10% de descuento ");
                                 int tp = 0;
                                 String placa;
                                 do {
@@ -178,6 +185,7 @@ public class ProyectoParqueadero {
                                 }
 
                                 //}
+                                //muestro lo que tenemos en parqueo 
                                 for (vehiculos temp : EnParqueo) {
 
                                     System.out.println(" lo que hay en el parqueo: " + temp.toString());
@@ -187,7 +195,8 @@ public class ProyectoParqueadero {
                             case 2:
 
                                 //verifico datos del carro  como placa que sea solo de 5 caracteres
-                                System.out.println("Ingresando datos del Carro.");
+                                System.out.print("costo de parqueo de carros por cada 60s es de: " + pagoCarro);
+                                System.out.println(" cuota estable ");
                                 int tap = 0;
                                 String placaCarro;
                                 do {
@@ -209,7 +218,7 @@ public class ProyectoParqueadero {
                                 } else {
                                     System.out.println(" Parqueo de Carros lleno.");
                                 }
-
+                                //muestro lo que hay en el parqueo
                                 for (vehiculos temp : EnParqueo) {
 
                                     System.out.println(" lo que hay en el parqueo: " + temp.toString());
@@ -219,7 +228,8 @@ public class ProyectoParqueadero {
                                 break;
                             case 3:
                                 //verifico datos del carro  como placa que sea solo de 5 caracteres
-                                System.out.println("Ingresando datos del camion.");
+                                System.out.print("costo de parqueo de motos por cada 60s es de: " + pagoCamion);
+                                System.out.println(" con un recargo del 10% ");
                                 int tamp = 0;
                                 String placaCamion;
                                 do {
@@ -268,7 +278,12 @@ public class ProyectoParqueadero {
                         tp = placas.length();
                     } while (tp != 5);
 
-                    //busco en el array list lo que se eliminara 
+                    /**
+                     * busco en el array list lo que se eliminara por medio de
+                     * la placa creo un if para consultar que tipo de vehiculo
+                     * es asi se pueda calcular su forma de pago ya que son
+                     * distintas maneras de pago
+                     */
                     for (int i = 0; i < EnParqueo.size(); i++) {
                         vehiculos tempo = EnParqueo.get(i);
                         if (tempo.getPlaca().equalsIgnoreCase(placas)) {
@@ -276,7 +291,7 @@ public class ProyectoParqueadero {
                             if (tempo instanceof Motos) {
                                 Motos mts = (Motos) tempo;
                                 Calendar hsMoto = Calendar.getInstance();
-                                int minutoss = hsMoto.get(Calendar.MINUTE); 
+                                int minutoss = hsMoto.get(Calendar.MINUTE);
                                 double totalpagar = calculoSalida(mts.getmEntrada(), minutoss, pagoMotos);
                                 EnParqueo.remove(i);
                                 mts.setPagoMotos(totalpagar);
@@ -346,7 +361,9 @@ public class ProyectoParqueadero {
         System.out.println(" 4. regresar ");
         System.out.println("Ingrese opcion: ");
     }
-
+    /**
+     * @serialData  menup. menu que muestra administracion de parquo 
+     */
     private static void menup() {
         System.out.println(" Administracion de Parqueo: ");
         System.out.println(" 1. Disponibilidad Para Motos y costo ");
